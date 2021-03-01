@@ -123,9 +123,14 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
             }
 
             xml.DocumentElement.SelectSingleNode("dcst:ContentTitleText", nsmgr).InnerText = ss.CurrentDCinemaMovieTitle;
-            if (string.IsNullOrEmpty(ss.CurrentDCinemaSubtitleId) || !ss.CurrentDCinemaSubtitleId.StartsWith("urn:uuid:"))
+            if (Configuration.Settings.SubtitleSettings.DCinemaSmpteAutoGenerateId || string.IsNullOrEmpty(ss.CurrentDCinemaSubtitleId) || !ss.CurrentDCinemaSubtitleId.StartsWith("urn:uuid:"))
             {
-                ss.CurrentDCinemaSubtitleId = "urn:uuid:" + Guid.NewGuid();
+                var guid = Guid.NewGuid().ToString();
+                ss.CurrentDCinemaSubtitleId = "urn:uuid:" + guid;
+                if (Configuration.Settings.SubtitleSettings.DCinemaSmpteAutoGenerateId)
+                {
+                    ss.CurrentDCinemaFontId = guid;
+                }
             }
 
             xml.DocumentElement.SelectSingleNode("dcst:Id", nsmgr).InnerText = ss.CurrentDCinemaSubtitleId;

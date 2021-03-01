@@ -1,7 +1,11 @@
 ﻿using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Logic;
 using System;
+using System.Drawing.Text;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Nikse.SubtitleEdit.Forms.DCinema
@@ -34,8 +38,10 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             buttonFontEffectColor.Text = l.ChooseColor;
             labelFontSize.Text = l.FontSize;
             buttonGenerateID.Text = l.GenerateId;
-            buttonGenFontUri.Text = l.Generate;
+            checkBoxIdAuto.Text = l.GenerateNewIdOnSave;
 
+            checkBoxIdAuto.Checked = Configuration.Settings.SubtitleSettings.DCinemaSmpteAutoGenerateId;
+            checkBoxFontAutoId.Checked = Configuration.Settings.SubtitleSettings.DCinemaFontUseSubtitleId;
             foreach (CultureInfo x in CultureInfo.GetCultures(CultureTypes.NeutralCultures))
             {
                 comboBoxLanguage.Items.Add(x.TwoLetterISOLanguageName);
@@ -46,8 +52,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             if (!string.IsNullOrEmpty(ss.CurrentDCinemaSubtitleId))
             {
                 textBoxSubtitleID.Text = ss.CurrentDCinemaSubtitleId;
-                int number;
-                if (int.TryParse(ss.CurrentDCinemaReelNumber, out number) &&
+                if (int.TryParse(ss.CurrentDCinemaReelNumber, out var number) &&
                     numericUpDownReelNumber.Minimum <= number && numericUpDownReelNumber.Maximum >= number)
                 {
                     numericUpDownReelNumber.Value = number;
@@ -147,10 +152,12 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
 
         private void buttonOK_Click_1(object sender, EventArgs e)
         {
+            Configuration.Settings.SubtitleSettings.DCinemaSmpteAutoGenerateId = checkBoxIdAuto.Checked;
+            Configuration.Settings.SubtitleSettings.DCinemaFontUseSubtitleId = checkBoxFontAutoId.Checked;
             var ss = Configuration.Settings.SubtitleSettings;
             ss.CurrentDCinemaSubtitleId = textBoxSubtitleID.Text;
             ss.CurrentDCinemaMovieTitle = textBoxMovieTitle.Text;
-            ss.CurrentDCinemaReelNumber = numericUpDownReelNumber.Value.ToString();
+            ss.CurrentDCinemaReelNumber = numericUpDownReelNumber.Value.ToString(CultureInfo.InvariantCulture);
             ss.CurrentDCinemaEditRate = textBoxEditRate.Text;
             ss.CurrentDCinemaTimeCodeRate = comboBoxTimeCodeRate.Text;
             ss.CurrentDCinemaStartTime = timeUpDownStartTime.TimeCode.ToHHMMSSFF();
@@ -190,11 +197,6 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             DialogResult = DialogResult.OK;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBoxFontUri.Text = GenerateID();
-        }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -204,6 +206,20 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
         {
             var hex = Guid.NewGuid().ToString().RemoveChar('-');
             return "urn:uuid:" + hex.Insert(8, "-").Insert(13, "-").Insert(18, "-").Insert(23, "-");
+        }
+
+        private void buttonFontBrowse_Click(object sender, EventArgs e)
+        {
+            using (var form = new DCinemaFontBrowser())
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                {
+                    return;
+                }
+
+                textBoxFontUri.Text = form.FontFileName;
+            }
+
         }
     }
 }

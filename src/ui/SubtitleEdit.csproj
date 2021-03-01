@@ -208,6 +208,12 @@
     <Compile Include="Forms\ColorChooser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\DCinema\DCinemaFontBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DCinema\DCinemaFontBrowser.Designer.cs">
+      <DependentUpon>DCinemaFontBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DCinema\DCinemaPropertiesInterop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1268,6 +1274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ColorChooser.resx">
       <DependentUpon>ColorChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DCinema\DCinemaFontBrowser.resx">
+      <DependentUpon>DCinemaFontBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DCinema\DCinemaPropertiesInterop.resx">
       <DependentUpon>DCinemaPropertiesInterop.cs</DependentUpon>

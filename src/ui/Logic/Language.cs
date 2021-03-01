@@ -556,6 +556,7 @@ namespace Nikse.SubtitleEdit.Logic
                 TitleSmpte = "D-Cinema properties (SMPTE)",
                 SubtitleId = "Subtitle ID",
                 GenerateId = "Generate ID",
+                GenerateNewIdOnSave = "Auto generate ID when saving",
                 MovieTitle = "Movie title",
                 ReelNumber = "Reel number",
                 Language = "Language",

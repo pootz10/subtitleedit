@@ -425,6 +425,7 @@
             public string TitleSmpte { get; set; }
             public string SubtitleId { get; set; }
             public string GenerateId { get; set; }
+            public string GenerateNewIdOnSave { get; set; }
             public string MovieTitle { get; set; }
             public string ReelNumber { get; set; }
             public string Language { get; set; }

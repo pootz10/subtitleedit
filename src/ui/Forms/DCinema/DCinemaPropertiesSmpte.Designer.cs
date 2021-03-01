@@ -30,8 +30,9 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
         /// </summary>
         private void InitializeComponent()
         {
-            TimeCode timeCode1 = new TimeCode();
+            Nikse.SubtitleEdit.Core.Common.TimeCode timeCode1 = new Nikse.SubtitleEdit.Core.Common.TimeCode();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxIdAuto = new System.Windows.Forms.CheckBox();
             this.timeUpDownStartTime = new Nikse.SubtitleEdit.Controls.TimeUpDown();
             this.labelStartTime = new System.Windows.Forms.Label();
             this.comboBoxTimeCodeRate = new System.Windows.Forms.ComboBox();
@@ -46,13 +47,14 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             this.buttonGenerateID = new System.Windows.Forms.Button();
             this.numericUpDownReelNumber = new System.Windows.Forms.NumericUpDown();
             this.groupBoxFont = new System.Windows.Forms.GroupBox();
+            this.checkBoxFontAutoId = new System.Windows.Forms.CheckBox();
+            this.buttonFontBrowse = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelFadeUpMs = new System.Windows.Forms.Label();
             this.numericUpDownFadeDown = new System.Windows.Forms.NumericUpDown();
             this.labelFadeDownTime = new System.Windows.Forms.Label();
             this.numericUpDownFadeUp = new System.Windows.Forms.NumericUpDown();
             this.labelFadeUpTime = new System.Windows.Forms.Label();
-            this.buttonGenFontUri = new System.Windows.Forms.Button();
             this.numericUpDownTopBottomMargin = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.panelFontEffectColor = new System.Windows.Forms.Panel();
@@ -91,6 +93,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.checkBoxIdAuto);
             this.groupBox1.Controls.Add(this.timeUpDownStartTime);
             this.groupBox1.Controls.Add(this.labelStartTime);
             this.groupBox1.Controls.Add(this.comboBoxTimeCodeRate);
@@ -112,18 +115,28 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             this.groupBox1.Controls.Add(this.labelSubtitleID);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(583, 512);
+            this.groupBox1.Size = new System.Drawing.Size(583, 615);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // checkBoxIdAuto
+            // 
+            this.checkBoxIdAuto.AutoSize = true;
+            this.checkBoxIdAuto.Location = new System.Drawing.Point(180, 56);
+            this.checkBoxIdAuto.Name = "checkBoxIdAuto";
+            this.checkBoxIdAuto.Size = new System.Drawing.Size(170, 17);
+            this.checkBoxIdAuto.TabIndex = 40;
+            this.checkBoxIdAuto.Text = "Auto generate ID when saving";
+            this.checkBoxIdAuto.UseVisualStyleBackColor = true;
             // 
             // timeUpDownStartTime
             // 
             this.timeUpDownStartTime.AutoSize = true;
             this.timeUpDownStartTime.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.timeUpDownStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.timeUpDownStartTime.Location = new System.Drawing.Point(181, 214);
+            this.timeUpDownStartTime.Location = new System.Drawing.Point(181, 245);
             this.timeUpDownStartTime.Name = "timeUpDownStartTime";
-            this.timeUpDownStartTime.Size = new System.Drawing.Size(96, 27);
+            this.timeUpDownStartTime.Size = new System.Drawing.Size(111, 27);
             this.timeUpDownStartTime.TabIndex = 8;
             timeCode1.Hours = 0;
             timeCode1.Milliseconds = 0;
@@ -138,7 +151,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelStartTime
             // 
             this.labelStartTime.AutoSize = true;
-            this.labelStartTime.Location = new System.Drawing.Point(15, 214);
+            this.labelStartTime.Location = new System.Drawing.Point(15, 245);
             this.labelStartTime.Name = "labelStartTime";
             this.labelStartTime.Size = new System.Drawing.Size(51, 13);
             this.labelStartTime.TabIndex = 39;
@@ -152,7 +165,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             "25",
             "30",
             "48"});
-            this.comboBoxTimeCodeRate.Location = new System.Drawing.Point(181, 185);
+            this.comboBoxTimeCodeRate.Location = new System.Drawing.Point(181, 216);
             this.comboBoxTimeCodeRate.Name = "comboBoxTimeCodeRate";
             this.comboBoxTimeCodeRate.Size = new System.Drawing.Size(112, 21);
             this.comboBoxTimeCodeRate.TabIndex = 7;
@@ -160,7 +173,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelTimeCodeRate
             // 
             this.labelTimeCodeRate.AutoSize = true;
-            this.labelTimeCodeRate.Location = new System.Drawing.Point(15, 188);
+            this.labelTimeCodeRate.Location = new System.Drawing.Point(15, 219);
             this.labelTimeCodeRate.Name = "labelTimeCodeRate";
             this.labelTimeCodeRate.Size = new System.Drawing.Size(78, 13);
             this.labelTimeCodeRate.TabIndex = 37;
@@ -168,7 +181,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // textBoxEditRate
             // 
-            this.textBoxEditRate.Location = new System.Drawing.Point(181, 161);
+            this.textBoxEditRate.Location = new System.Drawing.Point(181, 192);
             this.textBoxEditRate.Name = "textBoxEditRate";
             this.textBoxEditRate.Size = new System.Drawing.Size(112, 20);
             this.textBoxEditRate.TabIndex = 6;
@@ -177,7 +190,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelEditRate
             // 
             this.labelEditRate.AutoSize = true;
-            this.labelEditRate.Location = new System.Drawing.Point(15, 163);
+            this.labelEditRate.Location = new System.Drawing.Point(15, 194);
             this.labelEditRate.Name = "labelEditRate";
             this.labelEditRate.Size = new System.Drawing.Size(46, 13);
             this.labelEditRate.TabIndex = 35;
@@ -186,7 +199,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // buttonToday
             // 
             this.buttonToday.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonToday.Location = new System.Drawing.Point(461, 134);
+            this.buttonToday.Location = new System.Drawing.Point(461, 165);
             this.buttonToday.Name = "buttonToday";
             this.buttonToday.Size = new System.Drawing.Size(100, 23);
             this.buttonToday.TabIndex = 5;
@@ -196,7 +209,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // textBoxIssueDate
             // 
-            this.textBoxIssueDate.Location = new System.Drawing.Point(181, 135);
+            this.textBoxIssueDate.Location = new System.Drawing.Point(181, 166);
             this.textBoxIssueDate.Name = "textBoxIssueDate";
             this.textBoxIssueDate.Size = new System.Drawing.Size(274, 20);
             this.textBoxIssueDate.TabIndex = 4;
@@ -205,7 +218,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelIssueDate
             // 
             this.labelIssueDate.AutoSize = true;
-            this.labelIssueDate.Location = new System.Drawing.Point(15, 138);
+            this.labelIssueDate.Location = new System.Drawing.Point(15, 169);
             this.labelIssueDate.Name = "labelIssueDate";
             this.labelIssueDate.Size = new System.Drawing.Size(56, 13);
             this.labelIssueDate.TabIndex = 32;
@@ -214,7 +227,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // comboBoxLanguage
             // 
             this.comboBoxLanguage.FormattingEnabled = true;
-            this.comboBoxLanguage.Location = new System.Drawing.Point(181, 108);
+            this.comboBoxLanguage.Location = new System.Drawing.Point(181, 139);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(112, 21);
             this.comboBoxLanguage.TabIndex = 3;
@@ -222,7 +235,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelLanguage
             // 
             this.labelLanguage.AutoSize = true;
-            this.labelLanguage.Location = new System.Drawing.Point(15, 111);
+            this.labelLanguage.Location = new System.Drawing.Point(15, 142);
             this.labelLanguage.Name = "labelLanguage";
             this.labelLanguage.Size = new System.Drawing.Size(55, 13);
             this.labelLanguage.TabIndex = 30;
@@ -241,7 +254,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // numericUpDownReelNumber
             // 
-            this.numericUpDownReelNumber.Location = new System.Drawing.Point(181, 82);
+            this.numericUpDownReelNumber.Location = new System.Drawing.Point(181, 113);
             this.numericUpDownReelNumber.Maximum = new decimal(new int[] {
             250,
             0,
@@ -266,13 +279,14 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             this.groupBoxFont.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFont.Controls.Add(this.checkBoxFontAutoId);
+            this.groupBoxFont.Controls.Add(this.buttonFontBrowse);
             this.groupBoxFont.Controls.Add(this.label1);
             this.groupBoxFont.Controls.Add(this.labelFadeUpMs);
             this.groupBoxFont.Controls.Add(this.numericUpDownFadeDown);
             this.groupBoxFont.Controls.Add(this.labelFadeDownTime);
             this.groupBoxFont.Controls.Add(this.numericUpDownFadeUp);
             this.groupBoxFont.Controls.Add(this.labelFadeUpTime);
-            this.groupBoxFont.Controls.Add(this.buttonGenFontUri);
             this.groupBoxFont.Controls.Add(this.numericUpDownTopBottomMargin);
             this.groupBoxFont.Controls.Add(this.label2);
             this.groupBoxFont.Controls.Add(this.panelFontEffectColor);
@@ -289,17 +303,38 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             this.groupBoxFont.Controls.Add(this.labelFontId);
             this.groupBoxFont.Controls.Add(this.textBoxFontUri);
             this.groupBoxFont.Controls.Add(this.labelFontUri);
-            this.groupBoxFont.Location = new System.Drawing.Point(6, 237);
+            this.groupBoxFont.Location = new System.Drawing.Point(6, 282);
             this.groupBoxFont.Name = "groupBoxFont";
-            this.groupBoxFont.Size = new System.Drawing.Size(571, 265);
+            this.groupBoxFont.Size = new System.Drawing.Size(571, 327);
             this.groupBoxFont.TabIndex = 9;
             this.groupBoxFont.TabStop = false;
             this.groupBoxFont.Text = "Font";
             // 
+            // checkBoxFontAutoId
+            // 
+            this.checkBoxFontAutoId.AutoSize = true;
+            this.checkBoxFontAutoId.Location = new System.Drawing.Point(175, 71);
+            this.checkBoxFontAutoId.Name = "checkBoxFontAutoId";
+            this.checkBoxFontAutoId.Size = new System.Drawing.Size(217, 17);
+            this.checkBoxFontAutoId.TabIndex = 45;
+            this.checkBoxFontAutoId.Text = "Use subtitle ID and rename when saving";
+            this.checkBoxFontAutoId.UseVisualStyleBackColor = true;
+            // 
+            // buttonFontBrowse
+            // 
+            this.buttonFontBrowse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonFontBrowse.Location = new System.Drawing.Point(455, 43);
+            this.buttonFontBrowse.Name = "buttonFontBrowse";
+            this.buttonFontBrowse.Size = new System.Drawing.Size(29, 23);
+            this.buttonFontBrowse.TabIndex = 44;
+            this.buttonFontBrowse.Text = "...";
+            this.buttonFontBrowse.UseVisualStyleBackColor = true;
+            this.buttonFontBrowse.Click += new System.EventHandler(this.buttonFontBrowse_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(294, 232);
+            this.label1.Location = new System.Drawing.Point(294, 269);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 43;
@@ -308,7 +343,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelFadeUpMs
             // 
             this.labelFadeUpMs.AutoSize = true;
-            this.labelFadeUpMs.Location = new System.Drawing.Point(294, 206);
+            this.labelFadeUpMs.Location = new System.Drawing.Point(294, 243);
             this.labelFadeUpMs.Name = "labelFadeUpMs";
             this.labelFadeUpMs.Size = new System.Drawing.Size(41, 13);
             this.labelFadeUpMs.TabIndex = 42;
@@ -316,7 +351,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // numericUpDownFadeDown
             // 
-            this.numericUpDownFadeDown.Location = new System.Drawing.Point(174, 230);
+            this.numericUpDownFadeDown.Location = new System.Drawing.Point(174, 267);
             this.numericUpDownFadeDown.Maximum = new decimal(new int[] {
             50,
             0,
@@ -329,7 +364,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelFadeDownTime
             // 
             this.labelFadeDownTime.AutoSize = true;
-            this.labelFadeDownTime.Location = new System.Drawing.Point(10, 232);
+            this.labelFadeDownTime.Location = new System.Drawing.Point(10, 269);
             this.labelFadeDownTime.Name = "labelFadeDownTime";
             this.labelFadeDownTime.Size = new System.Drawing.Size(82, 13);
             this.labelFadeDownTime.TabIndex = 41;
@@ -337,7 +372,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // numericUpDownFadeUp
             // 
-            this.numericUpDownFadeUp.Location = new System.Drawing.Point(174, 204);
+            this.numericUpDownFadeUp.Location = new System.Drawing.Point(174, 241);
             this.numericUpDownFadeUp.Maximum = new decimal(new int[] {
             50,
             0,
@@ -350,26 +385,15 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelFadeUpTime
             // 
             this.labelFadeUpTime.AutoSize = true;
-            this.labelFadeUpTime.Location = new System.Drawing.Point(10, 206);
+            this.labelFadeUpTime.Location = new System.Drawing.Point(10, 243);
             this.labelFadeUpTime.Name = "labelFadeUpTime";
             this.labelFadeUpTime.Size = new System.Drawing.Size(68, 13);
             this.labelFadeUpTime.TabIndex = 40;
             this.labelFadeUpTime.Text = "Fade up time";
             // 
-            // buttonGenFontUri
-            // 
-            this.buttonGenFontUri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGenFontUri.Location = new System.Drawing.Point(454, 41);
-            this.buttonGenFontUri.Name = "buttonGenFontUri";
-            this.buttonGenFontUri.Size = new System.Drawing.Size(100, 23);
-            this.buttonGenFontUri.TabIndex = 2;
-            this.buttonGenFontUri.Text = "Generate";
-            this.buttonGenFontUri.UseVisualStyleBackColor = true;
-            this.buttonGenFontUri.Click += new System.EventHandler(this.button1_Click);
-            // 
             // numericUpDownTopBottomMargin
             // 
-            this.numericUpDownTopBottomMargin.Location = new System.Drawing.Point(175, 176);
+            this.numericUpDownTopBottomMargin.Location = new System.Drawing.Point(175, 213);
             this.numericUpDownTopBottomMargin.Maximum = new decimal(new int[] {
             50,
             0,
@@ -392,7 +416,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 178);
+            this.label2.Location = new System.Drawing.Point(10, 215);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 28;
@@ -401,7 +425,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // panelFontEffectColor
             // 
             this.panelFontEffectColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelFontEffectColor.Location = new System.Drawing.Point(297, 123);
+            this.panelFontEffectColor.Location = new System.Drawing.Point(297, 160);
             this.panelFontEffectColor.Name = "panelFontEffectColor";
             this.panelFontEffectColor.Size = new System.Drawing.Size(21, 20);
             this.panelFontEffectColor.TabIndex = 7;
@@ -409,7 +433,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // buttonFontEffectColor
             // 
-            this.buttonFontEffectColor.Location = new System.Drawing.Point(175, 123);
+            this.buttonFontEffectColor.Location = new System.Drawing.Point(175, 160);
             this.buttonFontEffectColor.Name = "buttonFontEffectColor";
             this.buttonFontEffectColor.Size = new System.Drawing.Size(112, 21);
             this.buttonFontEffectColor.TabIndex = 6;
@@ -420,7 +444,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // panelFontColor
             // 
             this.panelFontColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelFontColor.Location = new System.Drawing.Point(297, 70);
+            this.panelFontColor.Location = new System.Drawing.Point(297, 107);
             this.panelFontColor.Name = "panelFontColor";
             this.panelFontColor.Size = new System.Drawing.Size(21, 20);
             this.panelFontColor.TabIndex = 4;
@@ -428,7 +452,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // buttonFontColor
             // 
-            this.buttonFontColor.Location = new System.Drawing.Point(175, 70);
+            this.buttonFontColor.Location = new System.Drawing.Point(175, 107);
             this.buttonFontColor.Name = "buttonFontColor";
             this.buttonFontColor.Size = new System.Drawing.Size(112, 21);
             this.buttonFontColor.TabIndex = 3;
@@ -439,7 +463,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelEffectColor
             // 
             this.labelEffectColor.AutoSize = true;
-            this.labelEffectColor.Location = new System.Drawing.Point(10, 127);
+            this.labelEffectColor.Location = new System.Drawing.Point(10, 164);
             this.labelEffectColor.Name = "labelEffectColor";
             this.labelEffectColor.Size = new System.Drawing.Size(61, 13);
             this.labelEffectColor.TabIndex = 27;
@@ -447,7 +471,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // numericUpDownFontSize
             // 
-            this.numericUpDownFontSize.Location = new System.Drawing.Point(175, 150);
+            this.numericUpDownFontSize.Location = new System.Drawing.Point(175, 187);
             this.numericUpDownFontSize.Maximum = new decimal(new int[] {
             250,
             0,
@@ -460,7 +484,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelFontSize
             // 
             this.labelFontSize.AutoSize = true;
-            this.labelFontSize.Location = new System.Drawing.Point(10, 152);
+            this.labelFontSize.Location = new System.Drawing.Point(10, 189);
             this.labelFontSize.Name = "labelFontSize";
             this.labelFontSize.Size = new System.Drawing.Size(27, 13);
             this.labelFontSize.TabIndex = 25;
@@ -474,7 +498,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             "None",
             "Border",
             "Shadow"});
-            this.comboBoxFontEffect.Location = new System.Drawing.Point(175, 97);
+            this.comboBoxFontEffect.Location = new System.Drawing.Point(175, 134);
             this.comboBoxFontEffect.Name = "comboBoxFontEffect";
             this.comboBoxFontEffect.Size = new System.Drawing.Size(112, 21);
             this.comboBoxFontEffect.TabIndex = 5;
@@ -482,7 +506,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelEffect
             // 
             this.labelEffect.AutoSize = true;
-            this.labelEffect.Location = new System.Drawing.Point(10, 100);
+            this.labelEffect.Location = new System.Drawing.Point(10, 137);
             this.labelEffect.Name = "labelEffect";
             this.labelEffect.Size = new System.Drawing.Size(35, 13);
             this.labelEffect.TabIndex = 22;
@@ -491,7 +515,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelFontColor
             // 
             this.labelFontColor.AutoSize = true;
-            this.labelFontColor.Location = new System.Drawing.Point(10, 74);
+            this.labelFontColor.Location = new System.Drawing.Point(10, 111);
             this.labelFontColor.Name = "labelFontColor";
             this.labelFontColor.Size = new System.Drawing.Size(31, 13);
             this.labelFontColor.TabIndex = 18;
@@ -534,7 +558,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelReelNumber
             // 
             this.labelReelNumber.AutoSize = true;
-            this.labelReelNumber.Location = new System.Drawing.Point(15, 85);
+            this.labelReelNumber.Location = new System.Drawing.Point(15, 116);
             this.labelReelNumber.Name = "labelReelNumber";
             this.labelReelNumber.Size = new System.Drawing.Size(67, 13);
             this.labelReelNumber.TabIndex = 4;
@@ -542,7 +566,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             // textBoxMovieTitle
             // 
-            this.textBoxMovieTitle.Location = new System.Drawing.Point(181, 56);
+            this.textBoxMovieTitle.Location = new System.Drawing.Point(181, 87);
             this.textBoxMovieTitle.Name = "textBoxMovieTitle";
             this.textBoxMovieTitle.Size = new System.Drawing.Size(274, 20);
             this.textBoxMovieTitle.TabIndex = 2;
@@ -551,7 +575,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // labelMovieTitle
             // 
             this.labelMovieTitle.AutoSize = true;
-            this.labelMovieTitle.Location = new System.Drawing.Point(15, 59);
+            this.labelMovieTitle.Location = new System.Drawing.Point(15, 90);
             this.labelMovieTitle.Name = "labelMovieTitle";
             this.labelMovieTitle.Size = new System.Drawing.Size(55, 13);
             this.labelMovieTitle.TabIndex = 2;
@@ -578,7 +602,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonCancel.Location = new System.Drawing.Point(521, 529);
+            this.buttonCancel.Location = new System.Drawing.Point(521, 632);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 2;
@@ -590,7 +614,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonOK.Location = new System.Drawing.Point(440, 529);
+            this.buttonOK.Location = new System.Drawing.Point(440, 632);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 1;
@@ -602,7 +626,7 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 563);
+            this.ClientSize = new System.Drawing.Size(607, 666);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.groupBox1);
@@ -667,7 +691,6 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
         private System.Windows.Forms.Label labelTimeCodeRate;
         private Controls.TimeUpDown timeUpDownStartTime;
         private System.Windows.Forms.Label labelStartTime;
-        private System.Windows.Forms.Button buttonGenFontUri;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.NumericUpDown numericUpDownFadeDown;
@@ -676,5 +699,8 @@ namespace Nikse.SubtitleEdit.Forms.DCinema
         private System.Windows.Forms.Label labelFadeUpTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelFadeUpMs;
+        private System.Windows.Forms.CheckBox checkBoxIdAuto;
+        private System.Windows.Forms.CheckBox checkBoxFontAutoId;
+        private System.Windows.Forms.Button buttonFontBrowse;
     }
 }

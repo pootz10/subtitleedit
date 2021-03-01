@@ -509,7 +509,8 @@ namespace Nikse.SubtitleEdit.Core.Common
         public double DCinemaZPosition { get; set; }
         public int DCinemaFadeUpTime { get; set; }
         public int DCinemaFadeDownTime { get; set; }
-
+        public bool DCinemaSmpteAutoGenerateId { get; set; }
+        public bool DCinemaFontUseSubtitleId { get; set; }
         public string CurrentDCinemaSubtitleId { get; set; }
         public string CurrentDCinemaMovieTitle { get; set; }
         public string CurrentDCinemaReelNumber { get; set; }
@@ -5110,6 +5111,18 @@ $HorzAlign          =   Center
                     settings.SubtitleSettings.DCinemaFadeDownTime = Convert.ToInt32(subNode.InnerText, CultureInfo.InvariantCulture);
                 }
 
+                subNode = node.SelectSingleNode("DCinemaSmpteAutoGenerateId");
+                if (subNode != null)
+                {
+                    settings.SubtitleSettings.DCinemaSmpteAutoGenerateId = Convert.ToBoolean(subNode.InnerText, CultureInfo.InvariantCulture);
+                }
+
+                subNode = node.SelectSingleNode("DCinemaFontUseSubtitleId");
+                if (subNode != null)
+                {
+                    settings.SubtitleSettings.DCinemaFontUseSubtitleId = Convert.ToBoolean(subNode.InnerText, CultureInfo.InvariantCulture);
+                }
+
                 subNode = node.SelectSingleNode("SamiDisplayTwoClassesAsTwoSubtitles");
                 if (subNode != null)
                 {
@@ -8450,6 +8463,8 @@ $HorzAlign          =   Center
                 textWriter.WriteElementString("DCinemaZPosition", settings.SubtitleSettings.DCinemaZPosition.ToString(CultureInfo.InvariantCulture));
                 textWriter.WriteElementString("DCinemaFadeUpTime", settings.SubtitleSettings.DCinemaFadeUpTime.ToString(CultureInfo.InvariantCulture));
                 textWriter.WriteElementString("DCinemaFadeDownTime", settings.SubtitleSettings.DCinemaFadeDownTime.ToString(CultureInfo.InvariantCulture));
+                textWriter.WriteElementString("DCinemaSmpteAutoGenerateId", settings.SubtitleSettings.DCinemaSmpteAutoGenerateId.ToString(CultureInfo.InvariantCulture));
+                textWriter.WriteElementString("DCinemaFontUseSubtitleId", settings.SubtitleSettings.DCinemaFontUseSubtitleId.ToString(CultureInfo.InvariantCulture));
                 textWriter.WriteElementString("SamiDisplayTwoClassesAsTwoSubtitles", settings.SubtitleSettings.SamiDisplayTwoClassesAsTwoSubtitles.ToString(CultureInfo.InvariantCulture));
                 textWriter.WriteElementString("SamiHtmlEncodeMode", settings.SubtitleSettings.SamiHtmlEncodeMode.ToString(CultureInfo.InvariantCulture));
                 textWriter.WriteElementString("TimedText10TimeCodeFormat", settings.SubtitleSettings.TimedText10TimeCodeFormat);
